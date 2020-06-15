@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery animation</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			font-family: sans-serif;
+			font-size: 100%;
+			margin: 50px;
+			color: #222;
+			background-color: #eee;
+		}
+		h1 {
+			margin: 20px;
+		}
+		#animate {
+			width: 180px;
+			height: 120px;
+			font-size: 2em;
+			text-align: center;
+			line-height: 118px;
+			color: #fff;
+			background-color: #00c;
+			border: 2px solid #006;
+			border-radius: 5px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>jQuery Animation</h1>
+	<div id="animate">ANIMATE</div>
+	<h1>Tasks</h1>
+	<input id="task" type="text" placeholder="type in a new task">
+	<ul>
+		<li>cleaning the bathroom</li>
+		<li>drinking a beer with the neighbour</li>
+		<li>do some more stuff</li>
+		<li>make some food</li>
+		<li>study jQuery</li>
+	</ul>
+	<script type="text/javascript">
+		$("#animate").show(5000).hide(5000);
+		$("#task").on("keypress",function(e) {
+    		if(e.which == 13) {
+        		$("ul").append(`<li>${$(this).val()}</li>`);
+        		$(this).val("");
+        		$('li').on('click', function() {
+		            $(this).animate({
+		                opacity: 0.0,
+		                paddingLeft: '+=80'
+		            }, 500, function() {
+		                $(this).remove();
+		            });
+		        });
+    		}
+    	});
+		$('li').on('click', function() {
+            $(this).animate({
+                opacity: 0.0,
+                paddingLeft: '+=80'
+            }, 500, function() {
+                $(this).remove();
+            });
+        });
+	</script>
+</body>
+</html>
